@@ -28,5 +28,5 @@ This project will list, create, update and delete an employee.
 - git status
 - git commit -m "Initial commit."
 - git log
-- git remote add origin <your repository url>
+- git remote add origin \<your repository url>
 - git push -u origin master
