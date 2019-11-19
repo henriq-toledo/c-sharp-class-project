@@ -7,6 +7,8 @@ namespace CSharpClassProject.EmployeesRegister
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
+
+            Console.ReadLine();
         }
     }
 }
