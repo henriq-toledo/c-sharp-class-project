@@ -8,12 +8,13 @@ This project will list, create, update and delete an employee.
 
 - mkdir c-sharp-class-project
 - cd c-sharp-class-project
-- mkdir src
 - git init
 - include the .gitignore, .gitattributes and the README.md files
 - git config user.name "My User Name"
 - git config user.email myemail@mail.com
 - git config --list
+- mkdir src
+- cd src
 - mkdir CSharpClassProject
 - cd CSharpClassProject
 - dotnet new sln
