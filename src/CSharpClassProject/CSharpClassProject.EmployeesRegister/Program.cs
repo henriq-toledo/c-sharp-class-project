@@ -1,4 +1,6 @@
 ﻿using System;
+using CSharpClassProject.EmployeesRegister.Classes.Data;
+using CSharpClassProject.EmployeesRegister.Classes.Entities;
 
 namespace CSharpClassProject.EmployeesRegister
 {
@@ -6,7 +8,13 @@ namespace CSharpClassProject.EmployeesRegister
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Repository.InitializeData();
+
+            foreach(var employee in Repository.Employees)
+            {
+                Console.WriteLine(employee.GetInformation());
+                Console.WriteLine();
+            }
 
             Console.ReadLine();
         }
