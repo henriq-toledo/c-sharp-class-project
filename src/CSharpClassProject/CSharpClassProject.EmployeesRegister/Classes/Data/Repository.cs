@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using CSharpClassProject.EmployeesRegister.Classes.Entities;
 
@@ -19,6 +20,17 @@ namespace CSharpClassProject.EmployeesRegister.Classes.Data
 
             Repository.Employees.Add(tester);
             Repository.Employees.Add(developer);
+        }
+
+        public static void ShowData()
+        {
+            Console.Clear();
+
+            foreach(var employee in Repository.Employees)
+            {
+                Console.WriteLine(employee.GetInformation());
+                Console.WriteLine();
+            }
         }
     }
 }
