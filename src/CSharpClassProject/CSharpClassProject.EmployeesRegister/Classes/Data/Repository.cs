@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using CSharpClassProject.EmployeesRegister.Classes.Entities;
+using CSharpClassProject.EmployeesRegister.Enums;
 
 namespace CSharpClassProject.EmployeesRegister.Classes.Data
 {
@@ -11,8 +12,8 @@ namespace CSharpClassProject.EmployeesRegister.Classes.Data
         public static void InitializeData()
         {
             var tester = new Tester("John", "JJ Company", 1);
-            tester.AddFramework("Selenium IDE");
-            tester.AddFramework("Cucumber");
+            tester.AddFramework(TestFrameworksEnum.SeleniumIde);
+            tester.AddFramework(TestFrameworksEnum.Cucumber);
 
             var developer = new Developer("Sarah", "JJ Company", 2);
             developer.AddLanguage("C#");

@@ -1,21 +1,22 @@
 using System.Collections.Generic;
+using CSharpClassProject.EmployeesRegister.Enums;
 
 namespace CSharpClassProject.EmployeesRegister.Classes.Entities
 {
     public class Tester : Employee
     {
-        private List<string> _frameworks;
+        private List<TestFrameworksEnum> _frameworks;
 
         public Tester(string name, string companyName, int id) 
             : base(name, companyName, id)
         {
-            _frameworks = new List<string>();
+            _frameworks = new List<TestFrameworksEnum>();
         }
 
-        public void AddFramework(string framework) =>
+        public void AddFramework(TestFrameworksEnum framework) =>
             _frameworks.Add(framework);
 
-        public void RemoveFramework(string framework) => 
+        public void RemoveFramework(TestFrameworksEnum framework) => 
             _frameworks.Remove(framework);
         
         public override string Title => "Tester";

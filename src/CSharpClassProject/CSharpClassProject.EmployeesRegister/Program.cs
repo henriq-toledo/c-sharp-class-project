@@ -1,13 +1,14 @@
 ﻿using System;
 using CSharpClassProject.EmployeesRegister.Classes.Data;
 using CSharpClassProject.EmployeesRegister.Classes.Entities;
+using CSharpClassProject.EmployeesRegister.Enums;
 
 namespace CSharpClassProject.EmployeesRegister
 {
     class Program
     {
         static void Main(string[] args)
-        {            
+        {
             CreateTester();
             //CreateDeveloper();
 
@@ -37,10 +38,25 @@ namespace CSharpClassProject.EmployeesRegister
 
             do
             {
-                Console.WriteLine("Type the framework:");
-                framework = Console.ReadLine();
+                var enumValues = Enum.GetValues(typeof(TestFrameworksEnum));
+                
+                Console.WriteLine("Type the framework (99 - to exit):");
 
-                tester.AddFramework(framework);
+                foreach (TestFrameworksEnum item in enumValues)
+                {
+                    Console.WriteLine($"{item.GetHashCode()}-{item.ToString()}");
+                }
+                
+                framework = Console.ReadLine();
+                TestFrameworksEnum testFramework;
+
+                testFramework = (TestFrameworksEnum)
+                    Enum.Parse(typeof(TestFrameworksEnum), framework);
+
+                if (framework != "99")
+                {
+                    tester.AddFramework(testFramework);
+                }
             }
             while(framework != "99");
 
