@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using CSharpClassProject.EmployeesRegister.Classes.Data;
 using CSharpClassProject.EmployeesRegister.Classes.Entities;
 using CSharpClassProject.EmployeesRegister.Enums;
@@ -9,11 +10,11 @@ namespace CSharpClassProject.EmployeesRegister
     {
         static void Main(string[] args)
         {
-            CreateTester();
-            //CreateDeveloper();
+            //CreateTester();
+            CreateDeveloper();
 
             Repository.ShowData();
-            
+
             Console.ReadLine();
         }
 
@@ -25,7 +26,7 @@ namespace CSharpClassProject.EmployeesRegister
             Console.WriteLine();
             Console.Write("Type the name:");
             var name = Console.ReadLine();
-            
+
             Console.Write("Type the company name:");
             var companyName = Console.ReadLine();
 
@@ -34,31 +35,45 @@ namespace CSharpClassProject.EmployeesRegister
             Console.WriteLine();
 
             var tester = new Tester(name, companyName, id);
-            string framework;
+            string input;
+
+            var enumValues = Enum.GetValues(typeof(TestFrameworksEnum))
+                    .OfType<TestFrameworksEnum>();
 
             do
             {
-                var enumValues = Enum.GetValues(typeof(TestFrameworksEnum));
-                
                 Console.WriteLine("Type the framework (99 - to exit):");
 
-                foreach (TestFrameworksEnum item in enumValues)
+                foreach (var item in enumValues)
                 {
                     Console.WriteLine($"{item.GetHashCode()}-{item.ToString()}");
                 }
-                
-                framework = Console.ReadLine();
+
+                input = Console.ReadLine();
                 TestFrameworksEnum testFramework;
 
-                testFramework = (TestFrameworksEnum)
-                    Enum.Parse(typeof(TestFrameworksEnum), framework);
+                var existValue = enumValues
+                    .Any(s => s.GetHashCode().ToString() == input);
 
-                if (framework != "99")
+                Console.Clear();
+
+                if (existValue == false)
                 {
-                    tester.AddFramework(testFramework);
+                    Console.WriteLine("Invalid value, please type again.");
+                    Console.WriteLine();
+                }
+                else
+                {
+                    testFramework = (TestFrameworksEnum)
+                        Enum.Parse(typeof(TestFrameworksEnum), input);
+
+                    if (input != "99")
+                    {
+                        tester.AddFramework(testFramework);
+                    }
                 }
             }
-            while(framework != "99");
+            while (input != "99");
 
             Repository.Employees.Add(tester);
         }
@@ -71,7 +86,7 @@ namespace CSharpClassProject.EmployeesRegister
             Console.WriteLine();
             Console.Write("Type the name:");
             var name = Console.ReadLine();
-            
+
             Console.Write("Type the company name:");
             var companyName = Console.ReadLine();
             var id = Repository.Employees.Count + 1;
