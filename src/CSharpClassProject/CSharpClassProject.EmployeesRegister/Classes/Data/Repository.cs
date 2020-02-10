@@ -16,8 +16,8 @@ namespace CSharpClassProject.EmployeesRegister.Classes.Data
             tester.AddFramework(TestFrameworksEnum.Cucumber);
 
             var developer = new Developer("Sarah", "JJ Company", 2);
-            developer.AddLanguage("C#");
-            developer.AddLanguage("Python");
+            developer.AddLanguage(ProgrammingLanguagesEnum.CSharp);
+            developer.AddLanguage(ProgrammingLanguagesEnum.Python);
 
             Repository.Employees.Add(tester);
             Repository.Employees.Add(developer);

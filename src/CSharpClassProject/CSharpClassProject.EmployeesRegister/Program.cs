@@ -94,6 +94,46 @@ namespace CSharpClassProject.EmployeesRegister
             Console.WriteLine();
 
             var developer = new Developer(name, companyName, id);
+            string input;
+
+            var enumValues = Enum.GetValues(typeof(ProgrammingLanguagesEnum))
+                    .OfType<ProgrammingLanguagesEnum>();
+
+            do
+            {
+                Console.WriteLine("Type the languages (99 - to exit):");
+
+                foreach (var item in enumValues)
+                {
+                    Console.WriteLine($"{item.GetHashCode()}-{item.ToString()}");
+                }
+
+                input = Console.ReadLine();
+                ProgrammingLanguagesEnum language;
+
+                var existValue = enumValues
+                    .Any(s => s.GetHashCode().ToString() == input);
+
+                Console.Clear();
+
+                if (existValue == false)
+                {
+                    Console.WriteLine("Invalid value, please type again.");
+                    Console.WriteLine();
+                }
+                else
+                {
+                    language = (ProgrammingLanguagesEnum)
+                        Enum.Parse(typeof(ProgrammingLanguagesEnum), input);
+
+                    if (input != "99")
+                    {
+                        developer.AddLanguage(language);
+                    }
+                }
+            }
+            while (input != "99");
+
             Repository.Employees.Add(developer);
         }
     }
