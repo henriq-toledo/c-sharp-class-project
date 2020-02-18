@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using CSharpClassProject.EmployeesRegister.Classes.Data.Serializers;
 using CSharpClassProject.EmployeesRegister.Classes.Entities;
 using CSharpClassProject.EmployeesRegister.Enums;
 
@@ -32,6 +34,13 @@ namespace CSharpClassProject.EmployeesRegister.Classes.Data
                 Console.WriteLine(employee.GetInformation());
                 Console.WriteLine();
             }
+        }
+
+        public static void SaveData()
+        {
+            var testers = Employees.Where(e => e is Tester).Cast<Tester>().ToList();
+            var serializer = new TesterXmlSerializer();
+            serializer.Serialize(testers);
         }
     }
 }

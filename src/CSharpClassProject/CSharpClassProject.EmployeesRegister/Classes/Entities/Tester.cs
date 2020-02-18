@@ -1,23 +1,26 @@
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using CSharpClassProject.EmployeesRegister.Enums;
 
 namespace CSharpClassProject.EmployeesRegister.Classes.Entities
-{
+{    
+    [DataContract]
     public class Tester : Employee
-    {
-        private List<TestFrameworksEnum> _frameworks;
+    {        
+        [DataMember]
+        public List<TestFrameworksEnum> Frameworks;
 
         public Tester(string name, string companyName, int id) 
             : base(name, companyName, id)
         {
-            _frameworks = new List<TestFrameworksEnum>();
+            Frameworks = new List<TestFrameworksEnum>();
         }
 
         public void AddFramework(TestFrameworksEnum framework) =>
-            _frameworks.Add(framework);
+            Frameworks.Add(framework);
 
         public void RemoveFramework(TestFrameworksEnum framework) => 
-            _frameworks.Remove(framework);
+            Frameworks.Remove(framework);
         
         public override string Title => "Tester";
 
@@ -25,7 +28,7 @@ namespace CSharpClassProject.EmployeesRegister.Classes.Entities
         {
             var information = base.GetInformation();
 
-            information += $"Frameworks: {string.Join(',', _frameworks)}.";
+            information += $"Frameworks: {string.Join(',', Frameworks)}.";
 
             return information;
         }

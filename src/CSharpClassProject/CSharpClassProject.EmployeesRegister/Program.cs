@@ -11,9 +11,10 @@ namespace CSharpClassProject.EmployeesRegister
         static void Main(string[] args)
         {
             //CreateTester();
-            CreateDeveloper();
-
+            //CreateDeveloper();
+            Repository.InitializeData();
             Repository.ShowData();
+            Repository.SaveData();
 
             Console.ReadLine();
         }

@@ -1,11 +1,16 @@
+using System.Runtime.Serialization;
 using System.Text;
 
 namespace CSharpClassProject.EmployeesRegister.Classes.Entities
-{
+{    
+    [DataContract]
     public abstract class Employee
-    {
-        public string Name { get; set; }
-        public string CompanyName { get; set; }
+    {        
+        [DataMember]
+        public string Name { get; set; } 
+        [DataMember]    
+        public string CompanyName { get; set; }        
+        [DataMember]
         public int Id { get; set; }
         public abstract string Title { get; }
 
