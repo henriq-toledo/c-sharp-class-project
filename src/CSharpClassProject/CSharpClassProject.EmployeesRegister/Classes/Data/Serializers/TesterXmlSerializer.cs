@@ -17,5 +17,25 @@ namespace CSharpClassProject.EmployeesRegister.Classes.Data.Serializers
                 dataContractSerializer.WriteObject(stream, testers);
             }
         }
+
+        public List<Tester> Deserialize()
+        {
+            var dataContractSerializer = 
+                new DataContractSerializer(typeof(List<Tester>));
+
+            using(var stream = base.Stream)
+            {
+                var testers = new List<Tester>();
+
+                if(stream.Length > 0)
+                {
+                    testers = 
+                        (List<Tester>)dataContractSerializer
+                            .ReadObject(stream);
+                }
+
+                return testers;
+            }
+        }
     }
 }

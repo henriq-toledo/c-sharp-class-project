@@ -12,6 +12,7 @@ namespace CSharpClassProject.EmployeesRegister
         {
             //CreateTester();
             //CreateDeveloper();
+            Repository.LoadData();
             Repository.InitializeData();
             Repository.ShowData();
             Repository.SaveData();
