@@ -47,15 +47,25 @@ namespace CSharpClassProject.EmployeesRegister.Classes.Data
             var testers = Employees.Where(e => e is Tester).Cast<Tester>().ToList();
             var testerSerializer = new TesterXmlSerializer();
             testerSerializer.Serialize(testers);
+
+            var developer = Employees.Where(e => e is Developer).Cast<Developer>().ToList();
+            var developerSerializer = new DeveloperXmlSerializer();
+            developerSerializer.Serialize(developer);
         }
 
         public static void LoadData()
         {
+            Employees = new List<Employee>();
+
             var testerSerializer = new TesterXmlSerializer();
             var testers = testerSerializer.Deserialize();
-
-            Employees = new List<Employee>();
+           
             Employees.AddRange(testers);
+
+            var developerSerializer = new DeveloperXmlSerializer();
+            var developers = developerSerializer.Deserialize();
+
+            Employees.AddRange(developers);
         }
     }
 }
