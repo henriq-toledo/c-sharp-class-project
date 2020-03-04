@@ -45,11 +45,11 @@ namespace CSharpClassProject.EmployeesRegister.Classes.Data
         public static void SaveData()
         {
             var testers = Employees.Where(e => e is Tester).Cast<Tester>().ToList();
-            var testerSerializer = new TesterXmlSerializer();
+            var testerSerializer = new EntityXmlSerializer<Tester>();
             testerSerializer.Serialize(testers);
 
             var developer = Employees.Where(e => e is Developer).Cast<Developer>().ToList();
-            var developerSerializer = new DeveloperXmlSerializer();
+            var developerSerializer = new EntityXmlSerializer<Developer>();
             developerSerializer.Serialize(developer);
         }
 
@@ -57,12 +57,12 @@ namespace CSharpClassProject.EmployeesRegister.Classes.Data
         {
             Employees = new List<Employee>();
 
-            var testerSerializer = new TesterXmlSerializer();
+            var testerSerializer = new EntityXmlSerializer<Tester>();
             var testers = testerSerializer.Deserialize();
            
             Employees.AddRange(testers);
 
-            var developerSerializer = new DeveloperXmlSerializer();
+            var developerSerializer = new EntityXmlSerializer<Developer>();
             var developers = developerSerializer.Deserialize();
 
             Employees.AddRange(developers);
