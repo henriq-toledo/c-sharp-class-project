@@ -9,6 +9,8 @@ namespace CSharpClassProject.EmployeesRegister.Classes.Data
 {
     public static class Repository
     {
+        public static StorageOptionEnum DataStoreOption => StorageOptionEnum.Json;
+
         public static List<Employee> Employees = new List<Employee>();
 
         public static void InitializeData()
@@ -44,28 +46,31 @@ namespace CSharpClassProject.EmployeesRegister.Classes.Data
 
         public static void SaveData()
         {
-            var testers = Employees.Where(e => e is Tester).Cast<Tester>().ToList();
-            var testerSerializer = new EntityXmlSerializer<Tester>();
-            testerSerializer.Serialize(testers);
+            SaveEntity<Tester>();
+            SaveEntity<Developer>();
+        }
 
-            var developer = Employees.Where(e => e is Developer).Cast<Developer>().ToList();
-            var developerSerializer = new EntityXmlSerializer<Developer>();
-            developerSerializer.Serialize(developer);
+        private static void SaveEntity<TEntity>() where TEntity : Employee
+        {
+            var entities = Employees.Where(e => e is TEntity).Cast<TEntity>().ToList();
+            var serializer = new EntitySerializer<TEntity>(DataStoreOption);
+            serializer.Serialize(entities);
         }
 
         public static void LoadData()
         {
             Employees = new List<Employee>();
 
-            var testerSerializer = new EntityXmlSerializer<Tester>();
-            var testers = testerSerializer.Deserialize();
+            LoadEntity<Tester>();
+            LoadEntity<Developer>();
+        }
+
+        private static void LoadEntity<TEntity>() where TEntity : Employee
+        {
+            var serializer = new EntitySerializer<TEntity>(DataStoreOption);
+            var entities = serializer.Deserialize();
            
-            Employees.AddRange(testers);
-
-            var developerSerializer = new EntityXmlSerializer<Developer>();
-            var developers = developerSerializer.Deserialize();
-
-            Employees.AddRange(developers);
+            Employees.AddRange(entities);
         }
     }
 }
