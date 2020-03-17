@@ -5,10 +5,10 @@
    "version": "0.2.0",
    "configurations": [
         {
-            "name": ".NET Core Launch (console)",
+            "name": "EmployeesRegister",
             "type": "coreclr",
             "request": "launch",
-            "preLaunchTask": "build",
+            "preLaunchTask": "build_CSharpClassProject.EmployeesRegister",
             // If you have changed target frameworks, make sure to update the program path.
             "program": "${workspaceFolder}/CSharpClassProject.EmployeesRegister/bin/Debug/netcoreapp2.2/CSharpClassProject.EmployeesRegister.dll",
             "args": [],
@@ -18,10 +18,17 @@
             "stopAtEntry": false
         },
         {
-            "name": ".NET Core Attach",
+            "name": "ADO",
             "type": "coreclr",
-            "request": "attach",
-            "processId": "${command:pickProcess}"
+            "request": "launch",
+            "preLaunchTask": "build_CSharpClassProject.Ado",
+            // If you have changed target frameworks, make sure to update the program path.
+            "program": "${workspaceFolder}/CSharpClassProject.Ado/bin/Debug/netcoreapp2.2/CSharpClassProject.Ado.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/CSharpClassProject.Ado",
+            // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
+            "console": "externalTerminal",
+            "stopAtEntry": false
         }
     ]
 }
