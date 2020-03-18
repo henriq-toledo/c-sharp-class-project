@@ -1,3 +1,6 @@
+using CSharpClassProject.Ado.Classes.Entities;
+using System.Collections.Generic;
+
 namespace CSharpClassProject.Ado.Classes.Data
 {
     public abstract class Repository<TEntity>

@@ -1,3 +1,6 @@
+using CSharpClassProject.Ado.Enums;
+using System.Collections.Generic;
+
 namespace CSharpClassProject.Ado.Classes.Entities
 {
     public class Developer : Employee

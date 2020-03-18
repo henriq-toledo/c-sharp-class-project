@@ -1,3 +1,5 @@
+using System.Text;
+
 namespace CSharpClassProject.Ado.Classes.Entities
 {
     public abstract class Employee
