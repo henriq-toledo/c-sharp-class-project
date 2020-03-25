@@ -1,4 +1,5 @@
 ﻿using System;
+using CSharpClassProject.Ado.Classes.Data;
 
 namespace CSharpClassProject.Ado
 {
@@ -6,7 +7,14 @@ namespace CSharpClassProject.Ado
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var developers = Context.Developers.Get;
+
+            foreach(var developer in developers)
+            {
+                Console.WriteLine(developer.GetInformation());
+            }
+
+            Console.WriteLine("END");
             Console.ReadLine();
         }
     }
