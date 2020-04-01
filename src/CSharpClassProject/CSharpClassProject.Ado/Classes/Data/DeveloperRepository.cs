@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using CSharpClassProject.Ado.Classes.Entities;
+using CSharpClassProject.Ado.Enums;
 using Microsoft.Data.SqlClient;
+using System;
 
 namespace CSharpClassProject.Ado.Classes.Data
 {
@@ -28,6 +30,7 @@ namespace CSharpClassProject.Ado.Classes.Data
                         var companyName = reader.GetString(2);
 
                         var developer = new Developer(name, companyName, id);
+                        developer.Languages = GetLanguages(developer.Id);
 
                         developers.Add(developer);
                     }
@@ -50,6 +53,33 @@ namespace CSharpClassProject.Ado.Classes.Data
         public override SqlError Update(Developer entity)
         {
             throw new System.NotImplementedException();
+        }
+
+        private List<ProgrammingLanguagesEnum> GetLanguages(int developerId)
+        {
+            var languages = new List<ProgrammingLanguagesEnum>();
+
+            using(var sqlConnection = new SqlConnection(base.ConnectionString))
+            using(var sqlCommand = sqlConnection.CreateCommand())
+            {
+                sqlConnection.Open();
+
+                sqlCommand.CommandText = $@"
+                    SELECT SKILL FROM DEVELOPERS_SKILLS WHERE DEVELOPER_ID = {developerId}";
+
+                var reader = sqlCommand.ExecuteReader();
+
+                while(reader.Read())
+                {
+                    var skill = reader.GetByte(0);
+                    var language = (ProgrammingLanguagesEnum)
+                        Enum.Parse(typeof(ProgrammingLanguagesEnum), skill.ToString());
+
+                    languages.Add(language);
+                }
+            }
+
+            return languages;
         }
     }
 }
