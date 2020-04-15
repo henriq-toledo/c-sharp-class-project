@@ -14,6 +14,13 @@ namespace CSharpClassProject.Ado
                 Console.WriteLine(developer.GetInformation());
             }
 
+            var testers = Context.Testers.Get;
+
+            foreach(var tester in testers)
+            {
+                Console.WriteLine(tester.GetInformation());
+            }
+
             Console.WriteLine("END");
             Console.ReadLine();
         }
