@@ -1,5 +1,6 @@
 ﻿using System;
 using CSharpClassProject.Ado.Classes.Data;
+using CSharpClassProject.Ado.Classes.Entities;
 
 namespace CSharpClassProject.Ado
 {
@@ -7,6 +8,16 @@ namespace CSharpClassProject.Ado
     {
         static void Main(string[] args)
         {
+            var dev = new Developer(name: "Rafael", companyName: "JJ Comp");
+            var error = Context.Developers.Insert(dev);
+
+            if (error.HasError)
+            {
+                Console.WriteLine("Insert error.");
+                Console.ReadKey();
+                return;
+            }
+
             var developers = Context.Developers.Get;
 
             foreach(var developer in developers)

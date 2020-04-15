@@ -7,7 +7,7 @@ namespace CSharpClassProject.Ado.Classes.Entities
     {
         public List<ProgrammingLanguagesEnum> Languages;
 
-        public Developer(string name, string companyName, int id) 
+        public Developer(string name, string companyName, int id = 0) 
             : base(name, companyName, id)
         {
             Languages = new List<ProgrammingLanguagesEnum>();

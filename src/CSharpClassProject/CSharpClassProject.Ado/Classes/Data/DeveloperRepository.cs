@@ -47,7 +47,30 @@ namespace CSharpClassProject.Ado.Classes.Data
 
         public override SqlError Insert(Developer entity)
         {
-            throw new System.NotImplementedException();
+            var sqlError = new SqlError();
+
+            try
+            {
+                using(var sqlConnection = new SqlConnection(base.ConnectionString))
+                using(var sqlCommand = sqlConnection.CreateCommand())
+                {
+                    sqlConnection.Open();
+                    sqlCommand.CommandText = $@"INSERT INTO [dbo].[DEVELOPERS]([NAME], [COMPANY_NAME]) 
+                                                VALUES ('{entity.Name}', '{entity.CompanyName}');
+                                                
+                                                SELECT @@IDENTITY";
+
+                    var id = sqlCommand.ExecuteScalar();
+                    entity.Id = int.Parse(id.ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                sqlError.HasError = true;
+                sqlError.Message = ex.Message;
+            }
+
+            return sqlError;
         }
 
         public override SqlError Update(Developer entity)
