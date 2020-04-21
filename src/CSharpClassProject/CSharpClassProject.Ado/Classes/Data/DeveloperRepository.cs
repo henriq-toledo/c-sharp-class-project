@@ -3,6 +3,7 @@ using CSharpClassProject.Ado.Classes.Entities;
 using CSharpClassProject.Ado.Enums;
 using Microsoft.Data.SqlClient;
 using System;
+using System.Text;
 
 namespace CSharpClassProject.Ado.Classes.Data
 {
@@ -63,6 +64,9 @@ namespace CSharpClassProject.Ado.Classes.Data
                     var id = sqlCommand.ExecuteScalar();
                     entity.Id = int.Parse(id.ToString());
                 }
+
+                //InsertProgrammingLanguages(entity.Id, entity.Languages);
+                InsertProgrammingLanguages(entity);
             }
             catch (Exception ex)
             {
@@ -71,6 +75,57 @@ namespace CSharpClassProject.Ado.Classes.Data
             }
 
             return sqlError;
+        }
+
+        private void InsertProgrammingLanguages(
+            int developerId, 
+            List<ProgrammingLanguagesEnum> programmingLanguages)
+        {
+            if (programmingLanguages.Count == 0)
+            {
+                return;
+            }
+
+            using(var sqlConnection = new SqlConnection(base.ConnectionString))
+            {
+                sqlConnection.Open();
+
+                foreach (var programmingLanguage in programmingLanguages)
+                {
+                    using(var sqlCommand = sqlConnection.CreateCommand())
+                    {
+                        sqlCommand.CommandText = $@"INSERT INTO DEVELOPERS_SKILLS(DEVELOPER_ID, SKILL)
+                                                    VALUES({developerId}, {programmingLanguage.GetHashCode()})";
+
+                        sqlCommand.ExecuteNonQuery();
+                    }
+                }
+            }
+        }
+
+        private void InsertProgrammingLanguages(Developer developer)
+        {
+            if (developer.Languages.Count == 0)
+            {
+                return;
+            }
+
+            var sqlCommands = new StringBuilder();
+
+            foreach (var language in developer.Languages)
+            {
+                sqlCommands.AppendLine($@"INSERT INTO DEVELOPERS_SKILLS(DEVELOPER_ID, SKILL)
+                                          VALUES({developer.Id}, {language.GetHashCode()});");
+            }
+
+            using(var sqlConnection = new SqlConnection(base.ConnectionString))
+            using(var sqlCommand = sqlConnection.CreateCommand())
+            {
+                sqlConnection.Open();
+
+                sqlCommand.CommandText =  sqlCommands.ToString();
+                sqlCommand.ExecuteNonQuery();
+            }
         }
 
         public override SqlError Update(Developer entity)

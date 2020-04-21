@@ -1,6 +1,7 @@
 ﻿using System;
 using CSharpClassProject.Ado.Classes.Data;
 using CSharpClassProject.Ado.Classes.Entities;
+using CSharpClassProject.Ado.Enums;
 
 namespace CSharpClassProject.Ado
 {
@@ -8,7 +9,10 @@ namespace CSharpClassProject.Ado
     {
         static void Main(string[] args)
         {
-            var dev = new Developer(name: "Rafael", companyName: "JJ Comp");
+            var dev = new Developer(name: "Joy", companyName: "JJ Comp");
+            dev.Languages.Add(ProgrammingLanguagesEnum.Python);
+            dev.Languages.Add(ProgrammingLanguagesEnum.Pascal);
+
             var error = Context.Developers.Insert(dev);
 
             if (error.HasError)
