@@ -7,7 +7,7 @@ namespace CSharpClassProject.Ado.Classes.Entities
     {
         public List<TestFrameworksEnum> Frameworks;
 
-        public Tester(string name, string companyName, int id) 
+        public Tester(string name, string companyName, int id = 0) 
             : base(name, companyName, id)
         {
             Frameworks = new List<TestFrameworksEnum>();

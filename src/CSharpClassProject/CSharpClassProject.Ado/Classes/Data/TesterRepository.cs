@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Text;
 using CSharpClassProject.Ado.Classes.Entities;
 using CSharpClassProject.Ado.Enums;
 using Microsoft.Data.SqlClient;
@@ -45,9 +46,59 @@ namespace CSharpClassProject.Ado.Classes.Data
             throw new System.NotImplementedException();
         }
 
-        public override SqlError Insert(Tester entity)
+       public override SqlError Insert(Tester entity)
         {
-            throw new System.NotImplementedException();
+            var sqlError = new SqlError();
+
+            try
+            {
+                using(var sqlConnection = new SqlConnection(base.ConnectionString))
+                using(var sqlCommand = sqlConnection.CreateCommand())
+                {
+                    sqlConnection.Open();
+                    sqlCommand.CommandText = $@"INSERT INTO [dbo].[TESTERS]([NAME], [COMPANY_NAME]) 
+                                                VALUES ('{entity.Name}', '{entity.CompanyName}');
+                                                
+                                                SELECT @@IDENTITY";
+
+                    var id = sqlCommand.ExecuteScalar();
+                    entity.Id = int.Parse(id.ToString());
+                }
+                
+                InsertTestFrameworks(entity);
+            }
+            catch (Exception ex)
+            {
+                sqlError.HasError = true;
+                sqlError.Message = ex.Message;
+            }
+
+            return sqlError;
+        }
+
+        private void InsertTestFrameworks(Tester tester)
+        {
+            if (tester.Frameworks.Count == 0)
+            {
+                return;
+            }
+
+            var sqlCommands = new StringBuilder();
+
+            foreach (var framework in tester.Frameworks)
+            {
+                sqlCommands.AppendLine($@"INSERT INTO TESTERS_SKILLS(TESTER_ID, SKILL)
+                                          VALUES({tester.Id}, {framework.GetHashCode()});");
+            }
+
+            using(var sqlConnection = new SqlConnection(base.ConnectionString))
+            using(var sqlCommand = sqlConnection.CreateCommand())
+            {
+                sqlConnection.Open();
+
+                sqlCommand.CommandText =  sqlCommands.ToString();
+                sqlCommand.ExecuteNonQuery();
+            }
         }
 
         public override SqlError Update(Tester entity)
