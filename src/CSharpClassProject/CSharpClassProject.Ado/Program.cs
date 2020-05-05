@@ -3,6 +3,7 @@ using CSharpClassProject.Ado.Classes.Data;
 using CSharpClassProject.Ado.Classes.Entities;
 using CSharpClassProject.Ado.Enums;
 using CSharpClassProject.Ado.Classes.Extensions;
+using System.Linq;
 
 namespace CSharpClassProject.Ado
 {
@@ -10,33 +11,40 @@ namespace CSharpClassProject.Ado
     {
         static void Main(string[] args)
         {
-            var dev = new Developer(name: "Joy", companyName: "JJ Comp");
-            dev.Languages.Add(ProgrammingLanguagesEnum.Python);
-            dev.Languages.Add(ProgrammingLanguagesEnum.Pascal);
+            // var dev = new Developer(name: "Joy", companyName: "JJ Comp");
+            // dev.Languages.Add(ProgrammingLanguagesEnum.Python);
+            // dev.Languages.Add(ProgrammingLanguagesEnum.Pascal);
 
-            var devInsertError = Context.Developers.Insert(dev);
+            // var devInsertError = Context.Developers.Insert(dev);
 
-            if (devInsertError.HasError)
-            {
-                Console.WriteLine("Insert error.");
-                Console.WriteLine(devInsertError.Message);
-                Console.ReadKey();
-                return;
-            }
+            // if (devInsertError.HasError)
+            // {
+            //     Console.WriteLine("Insert error.");
+            //     Console.WriteLine(devInsertError.Message);
+            //     Console.ReadKey();
+            //     return;
+            // }
 
-            var tester = new Tester(name: "John", "JJ Comp");
-            tester.Frameworks.Add(TestFrameworksEnum.MSTest);
-            tester.Frameworks.Add(TestFrameworksEnum.NUnit);
+            // var tester = new Tester(name: "John", "JJ Comp");
+            // tester.Frameworks.Add(TestFrameworksEnum.MSTest);
+            // tester.Frameworks.Add(TestFrameworksEnum.NUnit);
 
-            var insertTesterError = Context.Testers.Insert(tester);
+            // var insertTesterError = Context.Testers.Insert(tester);
 
-            if (insertTesterError.HasError)
-            {
-                Console.WriteLine("Insert error.");
-                Console.WriteLine(insertTesterError.Message);
-                Console.ReadKey();
-                return;
-            }
+            // if (insertTesterError.HasError)
+            // {
+            //     Console.WriteLine("Insert error.");
+            //     Console.WriteLine(insertTesterError.Message);
+            //     Console.ReadKey();
+            //     return;
+            // }
+
+            ShowData();
+
+            Console.ReadLine();
+
+            var firstDeveloper = Context.Developers.Get.FirstOrDefault();
+            Context.Developers.Delete(firstDeveloper);
 
             ShowData();
 
