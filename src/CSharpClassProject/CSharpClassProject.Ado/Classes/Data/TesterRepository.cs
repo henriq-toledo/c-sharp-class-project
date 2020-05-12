@@ -43,7 +43,26 @@ namespace CSharpClassProject.Ado.Classes.Data
 
         public override SqlError Delete(Tester entity)
         {
-            throw new System.NotImplementedException();
+            var sqlError = new SqlError();
+
+            try
+            {
+                using(var sqlConnection = new SqlConnection(base.ConnectionString))
+                using(var sqlCommand = sqlConnection.CreateCommand())
+                {
+                    sqlConnection.Open();
+
+                    sqlCommand.CommandText = $"DELETE FROM TESTERS WHERE ID = {entity.Id}";
+                    sqlCommand.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                sqlError.HasError = true;
+                sqlError.Message = ex.Message;
+            }
+
+            return sqlError;
         }
 
        public override SqlError Insert(Tester entity)
