@@ -4,6 +4,7 @@ using CSharpClassProject.Ado.Enums;
 using Microsoft.Data.SqlClient;
 using System;
 using System.Text;
+using System.Transactions;
 
 namespace CSharpClassProject.Ado.Classes.Data
 {
@@ -129,6 +130,20 @@ namespace CSharpClassProject.Ado.Classes.Data
                 return;
             }
 
+            var sqlCommands = CreateInsertSkillCommand(developer);
+
+            using(var sqlConnection = new SqlConnection(base.ConnectionString))
+            using(var sqlCommand = sqlConnection.CreateCommand())
+            {
+                sqlConnection.Open();
+
+                sqlCommand.CommandText =  sqlCommands;
+                sqlCommand.ExecuteNonQuery();
+            }
+        }
+
+        private string CreateInsertSkillCommand(Developer developer)
+        {
             var sqlCommands = new StringBuilder();
 
             foreach (var language in developer.Languages)
@@ -137,19 +152,42 @@ namespace CSharpClassProject.Ado.Classes.Data
                                           VALUES({developer.Id}, {language.GetHashCode()});");
             }
 
-            using(var sqlConnection = new SqlConnection(base.ConnectionString))
-            using(var sqlCommand = sqlConnection.CreateCommand())
-            {
-                sqlConnection.Open();
-
-                sqlCommand.CommandText =  sqlCommands.ToString();
-                sqlCommand.ExecuteNonQuery();
-            }
+            return sqlCommands.ToString();
         }
 
         public override SqlError Update(Developer entity)
         {
-            throw new System.NotImplementedException();
+            var sqlError = new SqlError();
+
+            try
+            {
+                using(var transactionScope = new TransactionScope())
+                using(var sqlConnection = new SqlConnection(base.ConnectionString))
+                using(var sqlCommand = sqlConnection.CreateCommand())
+                {
+                    sqlConnection.Open();
+
+                    sqlCommand.CommandText = $@"UPDATE DEVELOPERS
+                                                SET NAME = '{entity.Name}', 
+                                                    COMPANY_NAME = '{entity.CompanyName}'
+                                                WHERE ID = {entity.Id};
+                                                
+                                                DELETE FROM DEVELOPERS_SKILLS WHERE DEVELOPER_ID = {entity.Id};";
+
+                    sqlCommand.CommandText += CreateInsertSkillCommand(entity);                                            
+
+                    sqlCommand.ExecuteNonQuery();
+
+                    transactionScope.Complete();
+                }
+            }
+            catch (Exception ex)
+            {
+                sqlError.HasError = true;
+                sqlError.Message = ex.Message;
+            }            
+
+            return sqlError;
         }
 
         private List<ProgrammingLanguagesEnum> GetLanguages(int developerId)
