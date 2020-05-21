@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Transactions;
 using CSharpClassProject.Ado.Classes.Entities;
 using CSharpClassProject.Ado.Enums;
 using Microsoft.Data.SqlClient;
@@ -102,6 +103,55 @@ namespace CSharpClassProject.Ado.Classes.Data
                 return;
             }
 
+            var sqlCommands = CreateInsertSkillCommand(tester);
+
+            using(var sqlConnection = new SqlConnection(base.ConnectionString))
+            using(var sqlCommand = sqlConnection.CreateCommand())
+            {
+                sqlConnection.Open();
+
+                sqlCommand.CommandText =  sqlCommands;
+                sqlCommand.ExecuteNonQuery();
+            }
+        }
+
+        public override SqlError Update(Tester entity)
+        {
+            var sqlError = new SqlError();
+
+            try
+            {
+                using(var transactionScope = new TransactionScope())
+                using(var sqlConnection = new SqlConnection(base.ConnectionString))
+                using(var sqlCommand = sqlConnection.CreateCommand())
+                {
+                    sqlConnection.Open();
+
+                    sqlCommand.CommandText = $@"UPDATE TESTERS
+                                                SET NAME = '{entity.Name}', 
+                                                    COMPANY_NAME = '{entity.CompanyName}'
+                                                WHERE ID = {entity.Id};
+                                                
+                                                DELETE FROM TESTERS_SKILLS WHERE TESTER_ID = {entity.Id};";
+
+                    sqlCommand.CommandText += CreateInsertSkillCommand(entity);                                            
+
+                    sqlCommand.ExecuteNonQuery();
+
+                    transactionScope.Complete();
+                }
+            }
+            catch (Exception ex)
+            {
+                sqlError.HasError = true;
+                sqlError.Message = ex.Message;
+            }            
+
+            return sqlError;
+        }
+
+        private string CreateInsertSkillCommand(Tester tester)
+        {
             var sqlCommands = new StringBuilder();
 
             foreach (var framework in tester.Frameworks)
@@ -110,19 +160,7 @@ namespace CSharpClassProject.Ado.Classes.Data
                                           VALUES({tester.Id}, {framework.GetHashCode()});");
             }
 
-            using(var sqlConnection = new SqlConnection(base.ConnectionString))
-            using(var sqlCommand = sqlConnection.CreateCommand())
-            {
-                sqlConnection.Open();
-
-                sqlCommand.CommandText =  sqlCommands.ToString();
-                sqlCommand.ExecuteNonQuery();
-            }
-        }
-
-        public override SqlError Update(Tester entity)
-        {
-            throw new System.NotImplementedException();
+            return sqlCommands.ToString();
         }
 
         private List<TestFrameworksEnum> GetTestFrameworks(int testerId)

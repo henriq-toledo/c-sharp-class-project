@@ -40,11 +40,19 @@ namespace CSharpClassProject.Ado
             // }
 
             ShowData();
+           
+            // var firstDeveloper = Context.Developers.Get.FirstOrDefault();
+            // firstDeveloper.Name = "Sara X";
+            // firstDeveloper.CompanyName = "Corp";
+            // firstDeveloper.Languages.Add(ProgrammingLanguagesEnum.R);
+            // firstDeveloper.Languages.Add(ProgrammingLanguagesEnum.R);
+            // Context.Developers.Update(firstDeveloper);
 
-            Console.ReadLine();
-
-            var firstDeveloper = Context.Developers.Get.FirstOrDefault();
-            Context.Developers.Delete(firstDeveloper);
+            var firstTester = Context.Testers.Get.FirstOrDefault();
+            firstTester.Name = "Joseph";
+            firstTester.Frameworks.Add(TestFrameworksEnum.JUnit);
+            //firstTester.Frameworks.Add(TestFrameworksEnum.JUnit);
+            Context.Testers.Update(firstTester);
 
             ShowData();
 
