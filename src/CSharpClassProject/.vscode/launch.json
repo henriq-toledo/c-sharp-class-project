@@ -29,6 +29,19 @@
             // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             "console": "externalTerminal",
             "stopAtEntry": false
+        },
+        {
+            "name": "EfCore",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build_CSharpClassProject.EfCore",
+            // If you have changed target frameworks, make sure to update the program path.
+            "program": "${workspaceFolder}/CSharpClassProject.EfCore/bin/Debug/netcoreapp2.2/CSharpClassProject.EfCore.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/CSharpClassProject.EfCore",
+            // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
+            "console": "externalTerminal",
+            "stopAtEntry": false
         }
     ]
 }
