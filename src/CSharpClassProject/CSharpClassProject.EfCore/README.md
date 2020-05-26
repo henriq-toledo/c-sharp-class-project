@@ -10,7 +10,7 @@ To execute the dotnet ef command, install the package below:
 <br>
 <code>dotnet add package Microsoft.EntityFrameworkCore.Tools</code>
 <br>
-<code>dotnet tool install --global dotnet-ef</code>
+<code>dotnet tool install --global dotnet-ef --version 2.2.6</code>
 
 Create the Employee abstract class inside the Classes\Entities folder:
 
