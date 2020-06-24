@@ -6,6 +6,7 @@ namespace CSharpClassProject.EfCore.Classes.Entities
     public class Context : DbContext, IContext
     {
         public DbSet<Developer> Developers { get; set; }
+        public DbSet<Tester> Testers { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
