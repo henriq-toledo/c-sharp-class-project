@@ -2,6 +2,7 @@
 using CSharpClassProject.EfCore.Classes.Entities;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using CSharpClassProject.EfCore.Enums;
 
 namespace CSharpClassProject.EfCore
 {
@@ -10,9 +11,36 @@ namespace CSharpClassProject.EfCore
         static void Main(string[] args)
         {
             //DeveloperCRUD();
-            TesterCRUD();
+            //TesterCRUD();
+            DeveloperWithSkill();
 
             Console.ReadLine();
+        }
+
+        static void DeveloperWithSkill()
+        {
+            // Insert
+            using (var context = new Context())
+            {
+                var developer = new Developer()
+                {
+                    Name = "Myst",
+                    CompanyName = "Toei"
+                };
+
+                developer.Skills.Add(new DeveloperSkill()
+                {
+                    Skill = DeveloperSkillEnum.CSharp
+                });
+
+                developer.Skills.Add(new DeveloperSkill()
+                {
+                    Skill = DeveloperSkillEnum.Css
+                });
+
+                context.Developers.Add(developer);
+                context.SaveChanges();
+            }
         }
 
         static void DeveloperCRUD()
