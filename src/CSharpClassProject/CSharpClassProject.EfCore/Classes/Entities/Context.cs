@@ -8,6 +8,7 @@ namespace CSharpClassProject.EfCore.Classes.Entities
         public DbSet<Developer> Developers { get; set; }
         public DbSet<Tester> Testers { get; set; }
         public DbSet<DeveloperSkill> DeveloperSkills { get; set; }
+        public DbSet<TesterSkill> TesterSkills { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

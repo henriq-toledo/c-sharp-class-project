@@ -12,9 +12,67 @@ namespace CSharpClassProject.EfCore
         {
             //DeveloperCRUD();
             //TesterCRUD();
-            DeveloperWithSkill();
+            //DeveloperWithSkill();
+            //TesterWithSkill();
+            //AddTesterSkill();
+            IncludeTesterSkill();            
 
             Console.ReadLine();
+        }
+
+        static void IncludeTesterSkill()
+        {
+            using(var context = new Context())
+            {
+                var tester = context.Testers.Include("Skills").FirstOrDefault();
+            }
+
+            using(var context = new Context())
+            {
+                var tester = context.Testers.Include(t => t.Skills).FirstOrDefault();
+            }
+        }
+
+        static void AddTesterSkill()
+        {
+            using(var context = new Context())
+            {
+                var tester = context.Testers.FirstOrDefault();
+                var testerSkill = new TesterSkill()
+                {
+                    TesterId = tester.Id,
+                    Skill = TesterSkillEnum.JUnit  
+                };
+
+                context.TesterSkills.Add(testerSkill);
+                context.SaveChanges();
+            }
+        }
+
+        static void TesterWithSkill()
+        {
+            // Insert
+            using (var context = new Context())
+            {
+                var tester = new Tester()
+                {
+                    Name = "Sara",
+                    CompanyName = "Toei"
+                };
+
+                tester.Skills.Add(new TesterSkill()
+                {
+                    Skill = TesterSkillEnum.Selenium
+                });
+
+                tester.Skills.Add(new TesterSkill()
+                {
+                    Skill = TesterSkillEnum.MSTest
+                });
+
+                context.Testers.Add(tester);
+                context.SaveChanges();
+            }
         }
 
         static void DeveloperWithSkill()
