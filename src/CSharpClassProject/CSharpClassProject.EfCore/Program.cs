@@ -15,9 +15,35 @@ namespace CSharpClassProject.EfCore
             //DeveloperWithSkill();
             //TesterWithSkill();
             //AddTesterSkill();
-            IncludeTesterSkill();            
+            //IncludeTesterSkill();
+            CreateDuplicatedDeveloperSkill();
 
             Console.ReadLine();
+        }
+
+        static void CreateDuplicatedDeveloperSkill()
+        {
+            using(var context = new Context())
+            {
+                var developer = new Developer()
+                {
+                    Name = "Jorge",
+                    CompanyName = "App"
+                };
+
+                developer.Skills.Add(new DeveloperSkill()
+                {
+                    Skill = DeveloperSkillEnum.CSharp
+                });
+
+                developer.Skills.Add(new DeveloperSkill()
+                {
+                    Skill = DeveloperSkillEnum.CSharp
+                });
+
+                context.Developers.Add(developer);
+                context.SaveChanges();
+            }
         }
 
         static void IncludeTesterSkill()

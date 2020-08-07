@@ -15,5 +15,14 @@ namespace CSharpClassProject.EfCore.Classes.Entities
             // Configures the database connection string
             optionsBuilder.UseSqlServer("<connection string>");
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder
+                .Entity<DeveloperSkill>()
+                .HasIndex(developerSkill => new { developerSkill.DeveloperId, developerSkill.Skill })
+                .IsUnique()
+                .HasName("UX_DeveloperSkills_DeveloperId_Skill");
+        }
     }
 }
