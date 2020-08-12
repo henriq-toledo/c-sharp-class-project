@@ -23,6 +23,12 @@ namespace CSharpClassProject.EfCore.Classes.Entities
                 .HasIndex(developerSkill => new { developerSkill.DeveloperId, developerSkill.Skill })
                 .IsUnique()
                 .HasName("UX_DeveloperSkills_DeveloperId_Skill");
+
+            modelBuilder
+                .Entity<TesterSkill>()
+                .HasIndex(testerSkill => new { testerSkill.TesterId, testerSkill.Skill })
+                .IsUnique()
+                .HasName("UX_TesterSkills_TesterId_Skill");
         }
     }
 }

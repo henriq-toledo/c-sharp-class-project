@@ -16,9 +16,51 @@ namespace CSharpClassProject.EfCore
             //TesterWithSkill();
             //AddTesterSkill();
             //IncludeTesterSkill();
-            CreateDuplicatedDeveloperSkill();
+            //CreateDuplicatedDeveloperSkill();
+            CreateDuplicatedTesterSkill();
 
             Console.ReadLine();
+        }
+
+        static void CreateDuplicatedTesterSkill()
+        {
+
+            try
+            {            
+                using(var context = new Context())
+                {
+                    var tester = new Tester()
+                    {
+                        Name = "Jorge",
+                        CompanyName = "App"
+                    };
+
+                    tester.Skills.Add(new TesterSkill()
+                    {
+                        Skill = TesterSkillEnum.Cucumber
+                    });
+
+                    tester.Skills.Add(new TesterSkill()
+                    {
+                        Skill = TesterSkillEnum.Cucumber
+                    });
+
+                    context.Testers.Add(tester);
+                    context.SaveChanges();
+                }
+            }
+            catch (DbUpdateException ex)
+            {
+                Console.WriteLine($"Exception: {ex.InnerException.Message}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Exception: {ex.Message}");
+            }            
+            finally
+            {
+                Console.WriteLine("Finish process.");
+            }
         }
 
         static void CreateDuplicatedDeveloperSkill()
