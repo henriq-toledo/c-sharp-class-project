@@ -44,6 +44,22 @@
                 "kind": "build",
                 "isDefault": true
             }
+        },
+        {
+            "label": "build_CSharpClassProject.ExceptionSample",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/CSharpClassProject.ExceptionSample/CSharpClassProject.ExceptionSample.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "problemMatcher": "$msCompile",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
         }
     ]
 }
