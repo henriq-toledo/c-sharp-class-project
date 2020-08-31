@@ -20,17 +20,60 @@ namespace CSharpClassProject.ExceptionSample
             // if (value2.HasValue)
             //Console.WriteLine(value2.Value);
 
+            // var note = "test";
+            // var a = note.Equals("test");
 
-            try
-            {
-                ExceptionMethod();
-            }
-            catch
-            {
-                Console.WriteLine("Other catch");
-            }
+
+            // try
+            // {
+            //     ExceptionMethod();
+            // }
+            // catch
+            // {
+            //     Console.WriteLine("Other catch");
+            // }
+
+            //Divide();
+
+            OpenFile();
 
             Console.ReadLine();
+        }
+
+        public static void TestMethod(ref bool a)
+        {
+        }
+
+        public static void Divide()
+        {
+            try
+            {
+                var a = 0;
+                var b = 1 / a;
+
+                Console.WriteLine(b);
+            }
+            catch (DivideByZeroException ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+        }
+
+        public static void OpenFile()
+        {
+            try
+            {
+                var file = File.Open(@"C:\Temp\abcd.txt", FileMode.Open);	
+            }
+            catch (FileNotFoundException)
+            {
+                Console.WriteLine("Arquivo não existe");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                throw ex;
+            }
         }
 
         static void ExceptionMethod()
