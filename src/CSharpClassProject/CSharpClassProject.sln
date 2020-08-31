@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpClassProject.EfCore",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpClassProject.ExceptionSample", "CSharpClassProject.ExceptionSample\CSharpClassProject.ExceptionSample.csproj", "{E33AD18C-1E01-4508-90B9-505EC65E33C8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpClassProject.RefOutSample", "CSharpClassProject.RefOutSample\CSharpClassProject.RefOutSample.csproj", "{23240D1B-4962-4BF7-95D1-0E1D0D5A864C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -72,5 +74,17 @@ Global
 		{E33AD18C-1E01-4508-90B9-505EC65E33C8}.Release|x64.Build.0 = Release|Any CPU
 		{E33AD18C-1E01-4508-90B9-505EC65E33C8}.Release|x86.ActiveCfg = Release|Any CPU
 		{E33AD18C-1E01-4508-90B9-505EC65E33C8}.Release|x86.Build.0 = Release|Any CPU
+		{23240D1B-4962-4BF7-95D1-0E1D0D5A864C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23240D1B-4962-4BF7-95D1-0E1D0D5A864C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23240D1B-4962-4BF7-95D1-0E1D0D5A864C}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{23240D1B-4962-4BF7-95D1-0E1D0D5A864C}.Debug|x64.Build.0 = Debug|Any CPU
+		{23240D1B-4962-4BF7-95D1-0E1D0D5A864C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{23240D1B-4962-4BF7-95D1-0E1D0D5A864C}.Debug|x86.Build.0 = Debug|Any CPU
+		{23240D1B-4962-4BF7-95D1-0E1D0D5A864C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23240D1B-4962-4BF7-95D1-0E1D0D5A864C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23240D1B-4962-4BF7-95D1-0E1D0D5A864C}.Release|x64.ActiveCfg = Release|Any CPU
+		{23240D1B-4962-4BF7-95D1-0E1D0D5A864C}.Release|x64.Build.0 = Release|Any CPU
+		{23240D1B-4962-4BF7-95D1-0E1D0D5A864C}.Release|x86.ActiveCfg = Release|Any CPU
+		{23240D1B-4962-4BF7-95D1-0E1D0D5A864C}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

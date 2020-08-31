@@ -51,7 +51,20 @@
             // If you have changed target frameworks, make sure to update the program path.
             "program": "${workspaceFolder}/CSharpClassProject.ExceptionSample/bin/Debug/netcoreapp2.2/CSharpClassProject.ExceptionSample.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/CSharpClassProject.EfCore",
+            "cwd": "${workspaceFolder}/CSharpClassProject.ExceptionSample",
+            // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
+            "console": "externalTerminal",
+            "stopAtEntry": false
+        },
+        {
+            "name": "RefOutSample",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build_CSharpClassProject.RefOutSample",
+            // If you have changed target frameworks, make sure to update the program path.
+            "program": "${workspaceFolder}/CSharpClassProject.RefOutSample/bin/Debug/netcoreapp2.2/CSharpClassProject.RefOutSample.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/CSharpClassProject.RefOutSample",
             // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             "console": "externalTerminal",
             "stopAtEntry": false
