@@ -68,6 +68,19 @@
             // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             "console": "externalTerminal",
             "stopAtEntry": false
+        },
+        {
+            "name": "ReflectionSample",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build_CSharpClassProject.ReflectionSample",
+            // If you have changed target frameworks, make sure to update the program path.
+            "program": "${workspaceFolder}/CSharpClassProject.ReflectionSample/bin/Debug/netcoreapp2.2/CSharpClassProject.ReflectionSample.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/CSharpClassProject.ReflectionSample",
+            // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
+            "console": "externalTerminal",
+            "stopAtEntry": false
         }
     ]
 }

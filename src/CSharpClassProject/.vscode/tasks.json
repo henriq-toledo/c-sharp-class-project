@@ -76,6 +76,22 @@
                 "kind": "build",
                 "isDefault": true
             }
+        },
+        {
+            "label": "build_CSharpClassProject.ReflectionSample",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/CSharpClassProject.ReflectionSample/CSharpClassProject.ReflectionSample.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "problemMatcher": "$msCompile",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
         }
     ]
 }

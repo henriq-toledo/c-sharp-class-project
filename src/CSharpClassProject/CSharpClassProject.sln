@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpClassProject.Exceptio
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpClassProject.RefOutSample", "CSharpClassProject.RefOutSample\CSharpClassProject.RefOutSample.csproj", "{23240D1B-4962-4BF7-95D1-0E1D0D5A864C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpClassProject.ReflectionSample", "CSharpClassProject.ReflectionSample\CSharpClassProject.ReflectionSample.csproj", "{0075F64D-DC7C-43BB-8B0B-1E692E727DAE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -86,5 +88,17 @@ Global
 		{23240D1B-4962-4BF7-95D1-0E1D0D5A864C}.Release|x64.Build.0 = Release|Any CPU
 		{23240D1B-4962-4BF7-95D1-0E1D0D5A864C}.Release|x86.ActiveCfg = Release|Any CPU
 		{23240D1B-4962-4BF7-95D1-0E1D0D5A864C}.Release|x86.Build.0 = Release|Any CPU
+		{0075F64D-DC7C-43BB-8B0B-1E692E727DAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0075F64D-DC7C-43BB-8B0B-1E692E727DAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0075F64D-DC7C-43BB-8B0B-1E692E727DAE}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{0075F64D-DC7C-43BB-8B0B-1E692E727DAE}.Debug|x64.Build.0 = Debug|Any CPU
+		{0075F64D-DC7C-43BB-8B0B-1E692E727DAE}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{0075F64D-DC7C-43BB-8B0B-1E692E727DAE}.Debug|x86.Build.0 = Debug|Any CPU
+		{0075F64D-DC7C-43BB-8B0B-1E692E727DAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0075F64D-DC7C-43BB-8B0B-1E692E727DAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0075F64D-DC7C-43BB-8B0B-1E692E727DAE}.Release|x64.ActiveCfg = Release|Any CPU
+		{0075F64D-DC7C-43BB-8B0B-1E692E727DAE}.Release|x64.Build.0 = Release|Any CPU
+		{0075F64D-DC7C-43BB-8B0B-1E692E727DAE}.Release|x86.ActiveCfg = Release|Any CPU
+		{0075F64D-DC7C-43BB-8B0B-1E692E727DAE}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
