@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpClassProject.RefOutSa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpClassProject.ReflectionSample", "CSharpClassProject.ReflectionSample\CSharpClassProject.ReflectionSample.csproj", "{0075F64D-DC7C-43BB-8B0B-1E692E727DAE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpClassProject.ActionAndFunctionSample", "CSharpClassProject.ActionAndFunctionSample\CSharpClassProject.ActionAndFunctionSample.csproj", "{7A32200B-1F59-4EC1-A0E2-8E5CADE9643E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -100,5 +102,17 @@ Global
 		{0075F64D-DC7C-43BB-8B0B-1E692E727DAE}.Release|x64.Build.0 = Release|Any CPU
 		{0075F64D-DC7C-43BB-8B0B-1E692E727DAE}.Release|x86.ActiveCfg = Release|Any CPU
 		{0075F64D-DC7C-43BB-8B0B-1E692E727DAE}.Release|x86.Build.0 = Release|Any CPU
+		{7A32200B-1F59-4EC1-A0E2-8E5CADE9643E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A32200B-1F59-4EC1-A0E2-8E5CADE9643E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A32200B-1F59-4EC1-A0E2-8E5CADE9643E}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{7A32200B-1F59-4EC1-A0E2-8E5CADE9643E}.Debug|x64.Build.0 = Debug|Any CPU
+		{7A32200B-1F59-4EC1-A0E2-8E5CADE9643E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7A32200B-1F59-4EC1-A0E2-8E5CADE9643E}.Debug|x86.Build.0 = Debug|Any CPU
+		{7A32200B-1F59-4EC1-A0E2-8E5CADE9643E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A32200B-1F59-4EC1-A0E2-8E5CADE9643E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A32200B-1F59-4EC1-A0E2-8E5CADE9643E}.Release|x64.ActiveCfg = Release|Any CPU
+		{7A32200B-1F59-4EC1-A0E2-8E5CADE9643E}.Release|x64.Build.0 = Release|Any CPU
+		{7A32200B-1F59-4EC1-A0E2-8E5CADE9643E}.Release|x86.ActiveCfg = Release|Any CPU
+		{7A32200B-1F59-4EC1-A0E2-8E5CADE9643E}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

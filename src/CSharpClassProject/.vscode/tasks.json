@@ -92,6 +92,22 @@
                 "kind": "build",
                 "isDefault": true
             }
+        },
+        {
+            "label": "build_CSharpClassProject.ActionAndFunctionSample",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/CSharpClassProject.ActionAndFunctionSample/CSharpClassProject.ActionAndFunctionSample.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "problemMatcher": "$msCompile",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
         }
     ]
 }

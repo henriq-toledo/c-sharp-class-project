@@ -81,6 +81,19 @@
             // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             "console": "externalTerminal",
             "stopAtEntry": false
+        },
+        {
+            "name": "ActionAndFunctionSample",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build_CSharpClassProject.ActionAndFunctionSample",
+            // If you have changed target frameworks, make sure to update the program path.
+            "program": "${workspaceFolder}/CSharpClassProject.ActionAndFunctionSample/bin/Debug/netcoreapp2.2/CSharpClassProject.ActionAndFunctionSample.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/CSharpClassProject.ActionAndFunctionSample",
+            // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
+            "console": "externalTerminal",
+            "stopAtEntry": false
         }
     ]
 }
