@@ -108,6 +108,22 @@
                 "kind": "build",
                 "isDefault": true
             }
+        },
+        {
+            "label": "build_CSharpClassProject.FileAndDirectory",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/CSharpClassProject.FileAndDirectory/CSharpClassProject.FileAndDirectory.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "problemMatcher": "$msCompile",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
         }
     ]
 }
