@@ -3,12 +3,14 @@ using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Linq;
+using System.IO;
+using System.Text;
 
 namespace CSharpClassProject.AsyncSample
 {
     class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
             Console.WriteLine("Async sample");
 
@@ -16,6 +18,9 @@ namespace CSharpClassProject.AsyncSample
 
             Sync(numbers);
             Async(numbers);
+
+            ReadFileSync();
+            await ReadFileAsync();
 
             Console.ReadLine();
         }
@@ -59,6 +64,38 @@ namespace CSharpClassProject.AsyncSample
         {
             Thread.Sleep(TimeSpan.FromSeconds(1));
             Console.WriteLine(number);
+        }
+    
+        static void ReadFileSync()
+        {
+            Console.WriteLine();
+            Console.WriteLine("Read Sync");
+
+            var stopWatch = new Stopwatch();
+
+            stopWatch.Start();
+
+            File.ReadAllText(@"..\..\..\README.md");
+
+            stopWatch.Stop();
+
+            Console.WriteLine($"Read Sync: {stopWatch.Elapsed.TotalSeconds} seconds");
+        }
+
+        static async Task ReadFileAsync()
+        {
+            Console.WriteLine();
+            Console.WriteLine("Read Async");
+
+            var stopWatch = new Stopwatch();
+
+            stopWatch.Start();
+
+            await File.ReadAllTextAsync(@"..\..\..\README.md");
+
+            stopWatch.Stop();
+
+            Console.WriteLine($"Read Async: {stopWatch.Elapsed.TotalSeconds} seconds");
         }
     }
 }
