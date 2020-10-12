@@ -15,6 +15,7 @@ namespace CSharpClassProject.AsyncSample
             var numbers = Enumerable.Range(1, 10).ToArray();
 
             Sync(numbers);
+            Async(numbers);
 
             Console.ReadLine();
         }
@@ -36,6 +37,22 @@ namespace CSharpClassProject.AsyncSample
             stopWatch.Stop();
 
             Console.WriteLine($"Sync: {stopWatch.Elapsed.TotalSeconds} seconds");
+        }
+
+        static void Async(int[] numbers)
+        {
+            Console.WriteLine();
+            Console.WriteLine("Start Async");
+
+            var stopWatch = new Stopwatch();
+
+            stopWatch.Start();
+
+            numbers.AsParallel().ForAll(number => Show(number));
+
+            stopWatch.Stop();
+
+            Console.WriteLine($"Async: {stopWatch.Elapsed.TotalSeconds} seconds");
         }
 
         static void Show(int number)
