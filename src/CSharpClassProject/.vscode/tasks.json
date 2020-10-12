@@ -124,6 +124,22 @@
                 "kind": "build",
                 "isDefault": true
             }
+        },
+        {
+            "label": "build_CSharpClassProject.AsyncSample",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/CSharpClassProject.AsyncSample/CSharpClassProject.AsyncSample.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "problemMatcher": "$msCompile",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
         }
     ]
 }

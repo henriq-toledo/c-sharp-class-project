@@ -107,6 +107,19 @@
             // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             "console": "externalTerminal",
             "stopAtEntry": false
+        },
+        {
+            "name": "AsyncSample",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build_CSharpClassProject.AsyncSample",
+            // If you have changed target frameworks, make sure to update the program path.
+            "program": "${workspaceFolder}/CSharpClassProject.AsyncSample/bin/Debug/netcoreapp2.2/CSharpClassProject.AsyncSample.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/CSharpClassProject.AsyncSample",
+            // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
+            "console": "externalTerminal",
+            "stopAtEntry": false
         }
     ]
 }
